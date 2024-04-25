@@ -1,0 +1,23 @@
+
+
+.blob {
+    position: absolute;
+    pointer-events: none;
+}
+
+@media(max-width:750px) {
+    .blob {
+        display: none;
+    }
+}
+
+.yellow {
+    top: -155px;
+    right: -155px;
+    rotate: 150deg;
+}
+
+.blue {
+    bottom: -165px;
+    left: -185px;
+}

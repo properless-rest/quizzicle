@@ -1,0 +1,210 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden; /* this hides scrollbars caused by blobs' positioning */
+    margin: 0;
+}
+
+body {
+    /* background-image: url("./static/bg-img.png"); */
+    position: relative;
+    background-color: var(--body-bg);
+    background-image: url("./static/blobs-blau.png");
+    background-image: url("./static/blobs-gelb.png");
+}
+
+h1, h2, h3, h4, h5, h6,
+p {
+    margin: 0;
+}
+
+main {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+}
+
+.intro-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30vh auto;
+    color: var(--text);
+}
+
+.intro-title {
+    margin-bottom: 7px;
+    font-family: "Karla";
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.intro-descr {
+    margin-bottom: 12px;
+    font-family: "Inter";
+    font-size: 16px;
+    font-weight: 500;
+}
+
+main .div-select {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    margin: 7px auto;
+    font-family: "Inter";
+
+}
+
+.div-select select {
+    padding: 3px;
+    border: 2px solid var(--btn-bg);
+    border-radius: 5px;
+    color: var(--text);
+}
+
+.intro-btn-start {
+    margin-top: 12px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 15px;
+    color: var(--btn-text);
+    background-color: var(--btn-bg);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fetch-loading {
+    margin: 40vh auto;
+    padding: 20px;
+    border: 1px solid var(--option-border);
+    border-radius: 10px;
+    font-style: oblique;
+    letter-spacing: 2px;
+    color: var(--text);
+}
+
+.game-main {
+    /* width: 700px; */
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.btn-to-index {
+    align-self: flex-start;
+    margin: 10px 0 20px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--btn-bg);
+    font-family: "Karla";
+    font-weight: 700;
+    color: var(--btn-text);
+    cursor: pointer;
+
+}
+
+.game-main .record {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-row-gap: 10px;
+    color: var(--text);
+}
+
+.record .question {
+    font-family: "Karla";
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.record .options-container {
+    margin-left: -10px;  /* compensates the indent from custom invisible radio elems */
+    display: flex;
+    grid-column-gap: 8px;
+}
+
+.options-container input {
+    display: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.options-container label {
+    padding: 4px 15px;
+    border: 1px solid var(--option-border);
+    border-radius: 8px;
+    font-family: "Inter";
+    font-size: 15px;
+    font-weight: 500;
+    /* white-space: nowrap;  too much stretching */
+    cursor: pointer;
+    user-select: none;
+}
+
+.options-container input[type=radio]:checked + label {
+    background-color: var(--option-picked-bg);
+    border-color: var(--option-picked-border);
+}
+
+.options-container input[type=radio]:disabled + label {
+    opacity: 0.75;
+}
+
+.options-container input[type=radio].correct-option + label {
+    background-color: var(--option-correct-bg);
+    border-color: var(--option-correct-bg);
+
+}
+
+.record .record-separator {
+    height: 1px;
+    width: 650px;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--record-separator);
+}
+
+.btn-check {
+    margin: 15px auto;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-family: "Inter";
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.div-score {
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-gap: 16px;
+}
+
+.score {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: "Inter";
+}
+
+.btn-replay {
+    border: none;
+    border-radius: 12px;
+    padding: 8px 14px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-family: "Inter";
+}

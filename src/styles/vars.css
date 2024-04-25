@@ -1,0 +1,14 @@
+
+:root {
+    --body-bg: #F5F7FB;
+    --text: #293264;
+    --btn-text: #F5F7FB;
+    --btn-bg: #4D5B9E;
+    --option-border: #4D5B9E;
+    --option-picked-bg: #D6DBF5;
+    --option-picked-border: #D6DBF5;
+    --option-disabled-bg: #3F3F3F;
+    --option-disabled-border: #3F3F3F;
+    --option-correct-bg: #94D7A2;
+    --record-separator: #DBDEF0;
+}
