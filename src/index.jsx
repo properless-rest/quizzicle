@@ -6,6 +6,7 @@ import App from './App.jsx';
 import './styles/vars.css';
 import './styles/fonts.css';
 import './styles/bg-blobs.css';
+import './styles/modal.css';
 import './styles/index.css';
 
 

@@ -1,16 +1,18 @@
 import React from "react";
 
+import Modal from "./Modal";
 
-export default function Intro( { setQuizStarted, setAmount, setDifficulty, setCategory } ) {
+
+export default function Intro( { modalVisible, setModalVisible, setQuizStarted, setAmount, setDifficulty, setCategory } ) {
     
 
     function startQuiz() {
         setQuizStarted(true);
     }
-
     
     return (
         <>
+            { modalVisible && <Modal modalVisible={modalVisible} setModalVisible={setModalVisible} /> }
             <h1 className="intro-title">Quizzical</h1>
             <h2 className="intro-descr">Play the best Quizzes right now!</h2>
             
@@ -41,7 +43,7 @@ export default function Intro( { setQuizStarted, setAmount, setDifficulty, setCa
 
             <div className="div-select">
                 <label htmlFor="amount">Choose the number of questions:</label>
-                <select id="amount" name="amount" size="1" on onChange={ e => setAmount(e.target.value) }>
+                <select id="amount" name="amount" size="1" onChange={ e => setAmount(e.target.value) }>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>

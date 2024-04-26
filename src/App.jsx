@@ -5,6 +5,7 @@ import Intro from "./components/Intro.jsx"
 
 
 function App() {
+  const [modalVisible, setModalVisible] = React.useState(false);  // modal showing when not enough data in the DB;
   const [quizStarted, setQuizStarted] = React.useState(false);
   const [category, setCategory] = React.useState("");
   const [difficulty, setDifficulty] = React.useState("");
@@ -13,7 +14,8 @@ function App() {
       <main className={ quizStarted ? "game-main" : "intro-main" }>
           {
               quizStarted ?
-              <Game 
+              <Game
+                setModalVisible={setModalVisible} 
                 setQuizStarted={setQuizStarted}
                 setAmount={setAmount} 
                 setDifficulty={setDifficulty} 
@@ -23,7 +25,14 @@ function App() {
                 category={category}
               />
               :
-              <Intro setQuizStarted={setQuizStarted} setAmount={setAmount} setDifficulty={setDifficulty} setCategory={setCategory} />
+              <Intro 
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+                setQuizStarted={setQuizStarted} 
+                setAmount={setAmount} 
+                setDifficulty={setDifficulty} 
+                setCategory={setCategory} 
+              />
           }
       </main>
   );

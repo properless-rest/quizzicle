@@ -5,7 +5,7 @@ import Record from "./Record.jsx"
 import { decode } from "he";
 
 
-export default function Game( { setQuizStarted, amount, difficulty, category, setAmount, setDifficulty, setCategory } ) {
+export default function Game( { setModalVisible, setQuizStarted, amount, difficulty, category, setAmount, setDifficulty, setCategory } ) {
   
     function switchPlaying() {
         // this will switch rounds only when "play again" is clicked, bur not when "check answers" is clicked;
@@ -26,11 +26,17 @@ export default function Game( { setQuizStarted, amount, difficulty, category, se
         // AFTER that, return to the Intro screen;
         setQuizStarted(false);
     }
+
+    function onEmptyResponce() {
+        resetToIntro();         // return to the Intro screen (render the Intro Component);
+        setModalVisible(true);  // make the modal Visible (not enough data in the DB);
+    }
     
-    const [fetchedData, setFetchedData] = React.useState(null);
     const [isPlaying, setIsPlaying] = React.useState(true);  // this switches between selecting and checking correct answers;
     const [roundSwitcher, setRoundSwitcher] = React.useState(false);  // this reloads new questions on new round start;
+    const [fetchedData, setFetchedData] = React.useState(null);
     const [answers, setAnswers] = React.useState([]);
+
     React.useEffect( 
         () =>
         {
@@ -41,7 +47,7 @@ export default function Game( { setQuizStarted, amount, difficulty, category, se
                         `https://opentdb.com/api.php?amount=${amount}&type=multiple&difficulty=${difficulty}&category=${category}`
                     );
                     if (!response.ok) {
-                        fetchData();
+                        fetchData();  // retry the fetching on bad responce;
                     }
                     const data = await response.json();
                     const transformedData = await data.results.map(
@@ -69,7 +75,7 @@ export default function Game( { setQuizStarted, amount, difficulty, category, se
                             }
                         }
                     );
-                    setFetchedData(transformedData);
+                    transformedData.length ? setFetchedData(transformedData) : onEmptyResponce();
                 } catch (error) {
                     console.error('There was a problem with the fetch operation:', error);
                     throw error;
